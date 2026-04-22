@@ -7,8 +7,8 @@ pipeline {
             agent { label 'node-agent' }
             steps {
                 dir('node-app') {
-                // This runs the app in the background
-                sh 'nohup node app.js > output.log 2>&1 &'
+                    // This runs the app in the background so Jenkins doesn't hang
+                    sh 'nohup node app.js > output.log 2>&1 &'
                 }
             }
         }
