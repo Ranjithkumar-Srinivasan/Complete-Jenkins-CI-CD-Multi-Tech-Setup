@@ -1,0 +1,34 @@
+pipeline {
+    agent none
+
+    stages {
+
+        stage('Node.js Build') {
+            agent { label 'node-agent' }
+            steps {
+                dir('node-app') {
+                    sh 'npm install || true'
+                    sh 'node app.js'
+                }
+            }
+        }
+
+        stage('Python Build') {
+            agent { label 'python-agent' }
+            steps {
+                dir('python-app') {
+                    sh 'python3 app.py'
+                }
+            }
+        }
+
+        stage('Java Build') {
+            agent { label 'java-agent' }
+            steps {
+                dir('java-app') {
+                    sh 'mvn clean package || true'
+                }
+            }
+        }
+    }
+}
