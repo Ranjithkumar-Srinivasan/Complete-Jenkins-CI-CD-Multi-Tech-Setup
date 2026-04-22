@@ -7,12 +7,12 @@ pipeline {
             agent { label 'node-agent' }
             steps {
                 dir('node-app') {
-                    sh 'npm install || true'
+                   // sh 'npm install || true'
                     sh 'node app.js'
                 }
             }
         }
-
+/*
         stage('Python Build') {
             agent { label 'python-agent' }
             steps {
@@ -32,3 +32,4 @@ pipeline {
         }
     }
 }
+*/
